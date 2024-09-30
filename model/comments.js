@@ -5,7 +5,7 @@ let commentSchema = mongoose.Schema({
     email: String,
     comment: String,
     productId:String,
-    image:String,
+    mediaUrl:String,
     date1:Date,
     date: {
         type: Date,

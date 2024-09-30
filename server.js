@@ -28,7 +28,7 @@ const generateOTP = () => {
   return crypto.randomInt(100000, 999999).toString();
 };
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3010;
 
 app.listen(port, function () {
   console.log(`Server is running on port ${port}`);
@@ -334,9 +334,7 @@ app.delete("/deleteUser", async function (req, res) {
 // Add Video
 
 app.post("/add-video", async function (req, res) {
-
   try {
-    
     const video = new Video({
       url: req.body.url, 
       user: req.body.user ? req.body.user : null, 
@@ -745,6 +743,7 @@ app.delete("/deleteOrder", async function (req, res) {
 
 app.post("/comments", async (req, res) => {
   try {
+    console.log("Comments data is :", req.body)
     let ob = { ...req.body };
     delete ob._id;
     const newComment = await Comment.create(ob);
