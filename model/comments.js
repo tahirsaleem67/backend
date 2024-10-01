@@ -6,6 +6,7 @@ let commentSchema = mongoose.Schema({
     comment: String,
     productId:String,
     mediaUrl:String,
+    userId:String,
     date1:Date,
     date: {
         type: Date,

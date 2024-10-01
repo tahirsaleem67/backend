@@ -399,8 +399,11 @@ app.get("/products", async (req, res) => {
       query = {};
     } else {
       query = {
-        $or: [{ category: new RegExp(`^${name}$`, "i") }],
+        $or: [
+          { category: new RegExp(`^${name}$`, 'i') },
+        ]
       };
+
     }
 
     if (minPrice || maxPrice) {
@@ -409,8 +412,8 @@ app.get("/products", async (req, res) => {
 
     if (search) {
       query.$or = [
-        { category: new RegExp(search, "i") },
-        { title: new RegExp(search, "i") },
+        { category: new RegExp(search, 'i') },
+        { title: new RegExp(search, 'i') }
       ];
     }
 
@@ -427,14 +430,14 @@ app.get("/products", async (req, res) => {
       }
     }
 
-    const newProduct = await Product.find(query)
-      .sort({ ...sortQuery, _id: -1 })
-      .exec();
+    const newProduct = await Product.find(query).sort({ ...sortQuery, _id: -1 }).exec();
     res.json(newProduct);
+
   } catch (e) {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 
 app.get("/product", async (req, res) => {
   try {
