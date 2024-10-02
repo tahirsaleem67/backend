@@ -4,22 +4,13 @@ let productSchema = mongoose.Schema({
     images: [String],
     title: String,
     description: String,
-    color1:String,
-    color2:String,
-    color3:String,
-    color4:String,
-    color5:String,
-    size1:String,
-    size2:String,
-    size3:String,
-    size4:String,
-    size5:String,
-    size6:String,
+    colors: [String], // Store selected colors in an array
+  sizes: [String], // Store selected sizes in an array
     status:String,
     category: {
         type: mongoose.Schema.Types.ObjectId,
         type:String,
-        ref: 'Collection', // Reference to Collection schema
+        ref: 'Collection',
     },
     sn: {
         type: Number,

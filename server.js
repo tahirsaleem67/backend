@@ -390,7 +390,7 @@ app.post("/product", async (req, res) => {
 
 app.get("/products", async (req, res) => {
   try {
-    const { name, sort, minPrice, maxPrice, search } = req.query;
+    const { name, sort, minPrice, maxPrice, search, size } = req.query;
 
     let query = {};
     let sortQuery = {};
@@ -564,16 +564,8 @@ app.put("/product-update", async function (req, res) {
     existingProduct.sn = req.body.sn;
     existingProduct.category = req.body.category;
     existingProduct.description = req.body.description;
-    existingProduct.color1 = req.body.color1;
-    existingProduct.color2 = req.body.color2;
-    existingProduct.color3 = req.body.color3;
-    existingProduct.color4 = req.body.color4;
-    existingProduct.color5 = req.body.color5;
-    existingProduct.size1 = req.body.size1;
-    existingProduct.size2 = req.body.size2;
-    existingProduct.size3 = req.body.size3;
-    existingProduct.size4 = req.body.size4;
-    existingProduct.size5 = req.body.size5;
+    existingProduct.colors = req.body.colors || existingProduct.colors;
+    existingProduct.sizes = req.body.sizes || existingProduct.sizes; 
     existingProduct.status = req.body.status;
     existingProduct.price = req.body.price || existingProduct.price;
     existingProduct.discount = req.body.discount;
